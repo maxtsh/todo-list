@@ -1,0 +1,108 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #113a53;
+}
+
+.container .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
+.container .wrapper .calendar-container {
+  -ms-flex-preferred-size: 60%;
+      flex-basis: 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container .wrapper .calendar-container .calendar-header {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  color: #fff;
+  font-size: 150%;
+  font-weight: 900;
+}
+
+.container .wrapper .calendar-container .calendar-body {
+  height: 100%;
+}
+
+.container .wrapper .calendar-container .calendar-body .react-calendar .react-calendar__navigation {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.container .wrapper .calendar-container .calendar-body .react-calendar .react-calendar__navigation .react-calendar__navigation__label {
+  -webkit-box-flex: unset !important;
+      -ms-flex-positive: unset !important;
+          flex-grow: unset !important;
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.container .wrapper .calendar-container .calendar-body .react-calendar .react-calendar__navigation button {
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 3rem;
+  margin: 1rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.container .wrapper .calendar-container .calendar-body .react-calendar .react-calendar__viewContainer {
+  color: #ffffff;
+}
+
+.container .wrapper .calendar-container .calendar-body .react-calendar .react-calendar__viewContainer .react-calendar__month-view div .react-calendar__month-view__weekdays {
+  text-align: center;
+  color: #8dc1dc;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.container .wrapper .calendar-container .calendar-body .react-calendar .react-calendar__viewContainer .react-calendar__month-view div .react-calendar__month-view__weekdays abbr {
+  text-decoration: none;
+}
+
+.container .wrapper .calendar-container .calendar-body .react-calendar .react-calendar__viewContainer .react-calendar__month-view div .react-calendar__month-view__days {
+  height: 85vh;
+}
+
+.container .wrapper .calendar-container .calendar-body .react-calendar .react-calendar__viewContainer .react-calendar__month-view div .react-calendar__month-view__days button {
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.container .wrapper .todo-container {
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
+  margin: 1rem;
+  border-radius: 3rem;
+  background-color: #ffffff;
+}
+/*# sourceMappingURL=home.css.map */
