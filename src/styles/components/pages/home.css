@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   width: 100vw;
   height: 100vh;
   background-color: #113a53;
@@ -17,8 +18,8 @@
 }
 
 .container .wrapper .calendar-container {
-  -ms-flex-preferred-size: 60%;
-      flex-basis: 60%;
+  -ms-flex-preferred-size: 70%;
+      flex-basis: 70%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -84,7 +85,7 @@
 }
 
 .container .wrapper .calendar-container .calendar-body .react-calendar .react-calendar__viewContainer .react-calendar__month-view div .react-calendar__month-view__days {
-  height: 85vh;
+  height: 80vh;
 }
 
 .container .wrapper .calendar-container .calendar-body .react-calendar .react-calendar__viewContainer .react-calendar__month-view div .react-calendar__month-view__days button {
@@ -99,10 +100,185 @@
 }
 
 .container .wrapper .todo-container {
-  -ms-flex-preferred-size: 40%;
-      flex-basis: 40%;
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
   margin: 1rem;
   border-radius: 3rem;
   background-color: #ffffff;
+}
+
+.container .wrapper .todo-container .todo-wrapper {
+  margin: 1rem 1rem;
+  padding: 2rem 1rem;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-header-options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-header-options-cog-img, .container .wrapper .todo-container .todo-wrapper .todo-header-options-bell-img {
+  width: 30px;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-header-options-bell {
+  position: relative;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-header-options-bell-img {
+  width: 32px;
+  margin-left: 1rem;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-header-options-bell-dot {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-header-avatar-img {
+  width: 70px;
+  border-radius: 50%;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-header-avatar-img:hover {
+  width: 100px;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-intro {
+  margin-top: 1rem 0rem;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-intro-title {
+  font-size: 180%;
+  font-weight: 700;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-intro-text {
+  margin-top: 1rem;
+  color: #b3b3b3;
+  font-size: 120%;
+  font-weight: 700;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-body-item {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #b3b3b3;
+  border-radius: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-body-item-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-body-item-header-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-body-item-header-main-form {
+  margin-right: 1rem;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-body-item-header-main-form-input {
+  width: 30px;
+  height: 30px;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-body-item-header-main-title {
+  font-size: 130%;
+  font-weight: 700;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-body-item-header-options .fas {
+  color: #b3b3b3;
+  font-size: 110%;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-body-item-footer {
+  margin-top: 1rem;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-body-item-footer-text-time {
+  font-size: 100%;
+  font-weight: 500;
+  color: #b3b3b3;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-add {
+  margin-top: 0.5rem;
+  text-align: right;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-add .todo-add-btn {
+  width: 80px;
+  height: 80px;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  background-color: #ff830c;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-add .todo-add-btn:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.container .wrapper .todo-container .todo-wrapper .todo-add .todo-add-btn .fas {
+  font-size: 200%;
+  color: #fff;
+}
+
+.container .snow-ground-img {
+  position: absolute;
+  bottom: 0;
+  width: 70%;
+  height: 100px;
+  opacity: 0.8;
 }
 /*# sourceMappingURL=home.css.map */
