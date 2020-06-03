@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Calendar from "react-calendar";
+
+// Components
+import Modal from "../layouts/Modal";
 
 const todos = [
   { title: "Fix my computer 1", id: 1, done: false },
@@ -9,6 +12,14 @@ const todos = [
 ];
 
 function Home() {
+  const [modal, setModal] = useState(false);
+
+  console.log("HOME RENDER");
+
+  function toggleModal() {
+    setModal(!modal);
+  }
+
   return (
     <div className="container">
       <div className="wrapper">
@@ -81,7 +92,7 @@ function Home() {
               ))}
             </div>
             <div className="todo-add">
-              <button className="todo-add-btn">
+              <button className="todo-add-btn" onClick={toggleModal}>
                 <i className="fas fa-plus"></i>
               </button>
             </div>
@@ -94,6 +105,79 @@ function Home() {
         src={require("../../assets/images/winter-ground.png")}
         alt=""
       />
+
+      {modal ? <Modal close={toggleModal} /> : null}
+
+      <div className="snow-layer">
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+        <div className="snow">❄</div>
+      </div>
     </div>
   );
 }

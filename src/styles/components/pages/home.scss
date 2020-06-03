@@ -1,13 +1,16 @@
 $light-grey: #b3b3b3;
+$dark-blue: #113a53;
+$light-blue: #8dc1dc;
 
 .container {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color: #113a53;
-  // overflow: hidden;
+  background-color: $dark-blue;
+  overflow: hidden;
 
   .wrapper {
+    position: relative;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -59,7 +62,7 @@ $light-grey: #b3b3b3;
               div {
                 .react-calendar__month-view__weekdays {
                   text-align: center;
-                  color: #8dc1dc;
+                  color: $light-blue;
                   font-family: "Roboto", sans-serif;
                   font-size: 1.5rem;
                   font-weight: 500;
@@ -252,5 +255,54 @@ $light-grey: #b3b3b3;
     width: 70%;
     height: 100px;
     opacity: 0.8;
+  }
+  @function random_range($min, $max) {
+    $rand: random();
+    $random_range: $min + floor($rand * (($max - $min) + 1));
+    @return $random_range;
+  }
+
+  .snow-layer {
+    width: 70%;
+
+    .snow {
+      $total: 70;
+      position: absolute;
+      top: 0;
+      width: 10px;
+      height: 10px;
+      color: #ffffff;
+      // background: white;
+      // border-radius: 50%;
+
+      @for $i from 1 through $total {
+        $random-x: random(1000000) * 0.0001vw;
+        $random-offset: random_range(-100000, 100000) * 0.0001vw;
+        $random-x-end: $random-x + $random-offset;
+        $random-x-end-yoyo: $random-x + ($random-offset / 2);
+        $random-yoyo-time: random_range(30000, 80000) / 100000;
+        $random-yoyo-y: $random-yoyo-time * 100vh;
+        $random-scale: random(10000) * 0.00017;
+        $fall-duration: random_range(10, 30) * 1s;
+        $fall-delay: random(30) * -1s;
+
+        &:nth-child(#{$i}) {
+          opacity: random(10000) * 0.0001;
+          transform: translate($random-x, -10px) scale($random-scale);
+          animation: fall-#{$i} $fall-duration $fall-delay linear infinite;
+        }
+
+        @keyframes fall-#{$i} {
+          #{percentage($random-yoyo-time)} {
+            transform: translate($random-x-end, $random-yoyo-y)
+              scale($random-scale);
+          }
+
+          to {
+            transform: translate($random-x-end-yoyo, 90vh) scale($random-scale);
+          }
+        }
+      }
+    }
   }
 }

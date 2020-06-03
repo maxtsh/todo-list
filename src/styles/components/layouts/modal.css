@@ -1,0 +1,182 @@
+.overlay {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-container {
+  z-index: 10;
+  position: absolute;
+  width: 800px;
+  height: 300px;
+  top: 50%;
+  left: 40%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border-radius: 1rem;
+}
+
+.modal-container .modal-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+
+.modal-container .modal-wrapper .modal-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.modal-container .modal-wrapper .modal-header-title {
+  font-size: 180%;
+  font-weight: 900;
+}
+
+.modal-container .modal-wrapper .modal-header .fa-times-circle {
+  cursor: pointer;
+  font-size: 180%;
+  color: #eb3b5a;
+}
+
+.modal-container .modal-wrapper .modal-body form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modal-container .modal-wrapper .modal-body form .input-wrap {
+  position: relative;
+  width: 90%;
+  overflow: hidden;
+}
+
+.modal-container .modal-wrapper .modal-body form .input-wrap label {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid #d2deeb;
+}
+
+.modal-container .modal-wrapper .modal-body form .input-wrap label::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid #3897f0;
+  left: 0;
+  bottom: -1px;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}
+
+.modal-container .modal-wrapper .modal-body form .input-wrap label .content {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.modal-container .modal-wrapper .modal-body form .input-wrap input {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 2rem 1rem 0.2rem 0rem;
+  border: none;
+  border-radius: 0.7rem;
+  outline: none;
+}
+
+.modal-container .modal-wrapper .modal-body form .input-wrap input:focus + label .content,
+.modal-container .modal-wrapper .modal-body form .input-wrap input:valid + label .content {
+  -webkit-transform: translateY(-150%);
+          transform: translateY(-150%);
+  font-size: 90%;
+  color: #3897f0;
+}
+
+.modal-container .modal-wrapper .modal-body form .input-wrap input:focus + label::after,
+.modal-container .modal-wrapper .modal-body form .input-wrap input:valid + label::after {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+.modal-container .modal-wrapper .modal-body form .input-wrap i {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  color: #e6ecf0;
+}
+
+.modal-container .modal-wrapper .modal-body form input[type="submit"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  width: 100%;
+  margin: 1rem 0rem;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 0.3rem;
+  outline: none;
+  color: #fff;
+  background-color: #113a53;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.modal-container .modal-wrapper .modal-body form input[type="submit"]:hover {
+  background-color: #3897f0;
+}
+
+.modal-container .modal-wrapper .modal-body form .switch:link,
+.modal-container .modal-wrapper .modal-body form .switch:visited {
+  color: #000;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.modal-container .modal-wrapper .modal-body form .switch:hover {
+  color: #3897f0;
+}
+/*# sourceMappingURL=modal.css.map */

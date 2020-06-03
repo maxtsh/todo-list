@@ -7,7 +7,8 @@ import * as serviceWorker from "./serviceWorker";
 import "./styles/global.css";
 // Pages Styles
 import "./styles/components/pages/home.css";
-// import "react-calendar/dist/Calendar.css";
+// Layouts
+import "./styles/components/layouts/modal.css";
 
 ReactDOM.render(
   <React.StrictMode>
