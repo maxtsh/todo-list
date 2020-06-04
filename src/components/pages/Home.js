@@ -1,23 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
+
+// React-Redux
+import { getTodos, clearGetTodos } from "../../actions";
+import { useDispatch, useSelector } from "react-redux";
 
 // Components
 import Modal from "../layouts/Modal";
 
-const todos = [
-  { title: "Fix my computer 1", id: 1, done: false },
-  { title: "Fix my computer 2", id: 2, done: false },
-  { title: "Fix my computer 3", id: 3, done: true },
-  { title: "Fix my computer 4", id: 4, done: false },
-];
-
 function Home() {
+  const dispatch = useDispatch();
+  const todos = useSelector((state) => state.todos);
   const [modal, setModal] = useState(false);
 
+  console.log(todos);
   console.log("HOME RENDER");
+
+  useEffect(() => {
+    getTodos(dispatch);
+
+    return () => clearGetTodos(dispatch);
+  }, [dispatch]);
 
   function toggleModal() {
     setModal(!modal);
+  }
+
+  if (!todos.data || todos.loading) {
+    return <h1>Loading...</h1>;
   }
 
   return (
@@ -61,35 +71,42 @@ function Home() {
               <p className="todo-intro-text">These are your tasks for today.</p>
             </div>
             <div className="todo-body">
-              {todos.map((todo) => (
-                <div key={todo.id} className="todo-body-item">
-                  <div className="todo-body-item-header">
-                    <div className="todo-body-item-header-main">
-                      <form className="todo-body-item-header-main-form">
-                        <input
-                          className="todo-body-item-header-main-form-input"
-                          type="checkbox"
-                          name="done"
-                        />
-                      </form>
-                      <h4 className="todo-body-item-header-main-title">
-                        {todo.title}
-                      </h4>
+              {todos.data.length !== 0 ? (
+                todos.data.map((todo) => (
+                  <div key={todo.id} className="todo-body-item">
+                    <div className="todo-body-item-header">
+                      <div className="todo-body-item-header-main">
+                        <form className="todo-body-item-header-main-form">
+                          <input
+                            className="todo-body-item-header-main-form-input"
+                            type="checkbox"
+                            name="done"
+                          />
+                        </form>
+                        <h4 className="todo-body-item-header-main-title">
+                          {todo.title}
+                        </h4>
+                      </div>
+                      <div className="todo-body-item-header-options">
+                        <i className="fas fa-ellipsis-h"></i>
+                      </div>
                     </div>
-                    <div className="todo-body-item-header-options">
-                      <i className="fas fa-ellipsis-h"></i>
+                    <div className="todo-body-item-footer">
+                      <p className="todo-body-item-footer-text">
+                        Due Date:{" "}
+                        <span className="todo-body-item-footer-text-time">
+                          {todo.deadline}
+                        </span>
+                      </p>
                     </div>
                   </div>
-                  <div className="todo-body-item-footer">
-                    <p className="todo-body-item-footer-text">
-                      Due Date:{" "}
-                      <span className="todo-body-item-footer-text-time">
-                        Tommorow at 12PM
-                      </span>
-                    </p>
-                  </div>
-                </div>
-              ))}
+                ))
+              ) : (
+                <h1 className="todo-body-notask">
+                  {" "}
+                  There are no tasks available now.
+                </h1>
+              )}
             </div>
             <div className="todo-add">
               <button className="todo-add-btn" onClick={toggleModal}>

@@ -1,5 +1,5 @@
 const initialState = {
-  todos: null,
+  data: null,
   loading: true,
   error: null,
 };
@@ -9,14 +9,26 @@ export default function todoReducer(state = initialState, action) {
     case "ADD_TODO":
       return {
         ...state,
-        todo: action.payload,
+      };
+
+    case "GET_TODOS":
+      return {
+        ...state,
+        data: action.payload,
         loading: false,
+      };
+
+    case "CLEAR_GET_TODOS":
+      return {
+        ...state,
+        data: null,
+        loading: true,
       };
 
     case "TODO_ERROR":
       return {
         ...state,
-        todo: null,
+        data: null,
         loading: false,
         error: action.payload,
       };

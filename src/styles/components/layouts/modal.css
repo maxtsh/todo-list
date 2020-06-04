@@ -94,7 +94,7 @@
   width: 100%;
   height: 100%;
   border-bottom: 3px solid #3897f0;
-  left: 0;
+  left: -1px;
   bottom: -1px;
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);

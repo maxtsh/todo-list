@@ -220,6 +220,14 @@ $light-blue: #8dc1dc;
               }
             }
           }
+
+          &-notask {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 100%;
+            font-weight: 700;
+            color: $dark-blue;
+          }
         }
 
         .todo-add {
