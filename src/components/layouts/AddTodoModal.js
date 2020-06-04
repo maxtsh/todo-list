@@ -1,14 +1,14 @@
 import React from "react";
+import DateTimePicker from "react-datetime-picker";
 import { useForm } from "../../hooks/useForm";
 import { v4 as uuidv4 } from "uuid";
 import { addTodo } from "../../actions";
-import { useDispatch } from "react-redux";
 
-function Modal({ close }) {
-  const dispatch = useDispatch();
+function AddTodoModal({ close }) {
   const [todo, change, reset] = useForm({
     id: uuidv4(),
     title: "",
+    done: false,
     deadline: "",
   });
 
@@ -20,7 +20,7 @@ function Modal({ close }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    addTodo(dispatch, todo);
+    addTodo(todo);
     reset();
     window.location.reload();
   }
@@ -43,14 +43,14 @@ function Modal({ close }) {
                 </label>
                 <i className="fas fa-tasks"></i>
               </div>
-
               <div className="input-wrap">
-                <input type="text" name="deadline" required onChange={change} />
+                <input type="date" name="deadline" required onChange={change} />
                 <label htmlFor="deadline">
-                  <span className="content">Deadline</span>
+                  <span className="content"></span>
                 </label>
                 <i className="fas fa-history"></i>
               </div>
+              <DateTimePicker />
               <div className="login-footer">
                 <input type="submit" value="Add" />
               </div>
@@ -62,4 +62,4 @@ function Modal({ close }) {
   );
 }
 
-export default Modal;
+export default AddTodoModal;

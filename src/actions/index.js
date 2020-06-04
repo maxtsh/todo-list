@@ -1,6 +1,4 @@
-import * as TYPES from "./Types";
-
-export function getTodos(dispatch) {
+export function getTodos() {
   let todos;
   if (JSON.parse(localStorage.getItem("todos"))) {
     todos = JSON.parse(localStorage.getItem("todos"));
@@ -8,19 +6,10 @@ export function getTodos(dispatch) {
     todos = [];
   }
 
-  dispatch({
-    type: TYPES.GET_TODOS,
-    payload: todos,
-  });
+  return todos;
 }
 
-export function clearGetTodos(dispatch) {
-  dispatch({
-    type: TYPES.CLEAR_GET_TODOS,
-  });
-}
-
-export function addTodo(dispatch, todo) {
+export function addTodo(todo) {
   if (JSON.parse(localStorage.getItem("todos"))) {
     let todos = JSON.parse(localStorage.getItem("todos"));
     todos.push(todo);
@@ -28,8 +17,4 @@ export function addTodo(dispatch, todo) {
   } else {
     localStorage.setItem("todos", JSON.stringify([todo]));
   }
-
-  dispatch({
-    type: TYPES.ADD_TODO,
-  });
 }
