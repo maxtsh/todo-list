@@ -33,6 +33,12 @@ $light-blue: #8dc1dc;
         height: 100%;
 
         .react-calendar {
+          // These below styles are to clear conflict between two react packages of datetime and calendar
+          width: inherit;
+          background-color: transparent;
+          border: none;
+          font-family: "Roboto", sans-serif;
+
           .react-calendar__navigation {
             justify-content: center;
             margin-bottom: 1rem;

@@ -18,3 +18,13 @@ export function addTodo(todo) {
     localStorage.setItem("todos", JSON.stringify([todo]));
   }
 }
+
+export function setDone(todoId) {
+  const selectedTodo = JSON.parse(localStorage.getItem("todos")).find(
+    (todo) => todo.id === todoId
+  );
+
+  selectedTodo.done = true;
+
+  JSON.parse(localStorage.getItem("todos")).splice();
+}

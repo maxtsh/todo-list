@@ -1,5 +1,4 @@
 import React from "react";
-import DateTimePicker from "react-datetime-picker";
 import { useForm } from "../../hooks/useForm";
 import { v4 as uuidv4 } from "uuid";
 import { addTodo } from "../../actions";
@@ -22,7 +21,6 @@ function AddTodoModal({ close }) {
     e.preventDefault();
     addTodo(todo);
     reset();
-    window.location.reload();
   }
 
   return (
@@ -37,7 +35,13 @@ function AddTodoModal({ close }) {
           <div className="modal-body">
             <form onSubmit={handleSubmit}>
               <div className="input-wrap">
-                <input type="text" name="title" onChange={change} required />
+                <input
+                  type="text"
+                  name="title"
+                  onChange={change}
+                  value={todo.title}
+                  required
+                />
                 <label htmlFor="title">
                   <span className="content">Title</span>
                 </label>
@@ -50,7 +54,6 @@ function AddTodoModal({ close }) {
                 </label>
                 <i className="fas fa-history"></i>
               </div>
-              <DateTimePicker />
               <div className="login-footer">
                 <input type="submit" value="Add" />
               </div>

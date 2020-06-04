@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getTodos } from "../../actions/index";
+import { getTodos, setDone } from "../../actions/index";
 
 function Todos() {
   const [optionModal, setOptionModal] = useState({ show: false, todoId: "" });
@@ -7,6 +7,10 @@ function Todos() {
 
   function handleOptions(todoId) {
     setOptionModal({ show: true, todoId });
+  }
+
+  function handleDoneChange(todoId) {
+    setDone(todoId);
   }
 
   return (
@@ -24,9 +28,15 @@ function Todos() {
                       className="todo-body-item-header-main-form-input"
                       type="checkbox"
                       name="done"
+                      onChange={() => handleDoneChange(todo.id)}
                     />
                   </form>
-                  <h4 className="todo-body-item-header-main-title">
+                  <h4
+                    style={
+                      todo.done ? { textDecoration: "line-through" } : null
+                    }
+                    className="todo-body-item-header-main-title"
+                  >
                     {todo.title}
                   </h4>
                 </div>
