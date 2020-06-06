@@ -80,8 +80,16 @@ $light-blue: #8dc1dc;
                 .react-calendar__month-view__days {
                   height: 80vh;
 
+                  .react-calendar__tile--now {
+                    abbr {
+                      padding: 1rem;
+                      border-radius: 50%;
+                      background-color: #ffffff;
+                      color: $dark-blue;
+                    }
+                  }
+
                   button {
-                    cursor: pointer;
                     font-size: 1.5rem;
                     font-weight: 700;
                     font-family: "Roboto", sans-serif;
@@ -89,6 +97,10 @@ $light-blue: #8dc1dc;
                     background-color: transparent;
                     border: none;
                     outline: none;
+
+                    abbr {
+                      cursor: pointer;
+                    }
                   }
                 }
               }
