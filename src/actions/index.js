@@ -20,11 +20,10 @@ export function addTodo(todo) {
 }
 
 export function setDone(todoId) {
-  const selectedTodo = JSON.parse(localStorage.getItem("todos")).find(
-    (todo) => todo.id === todoId
-  );
+  const todos = JSON.parse(localStorage.getItem("todos"));
+  const selectedTodo = todos.find((todo) => todo.id === todoId);
 
-  selectedTodo.done = true;
+  selectedTodo.done ? (selectedTodo.done = false) : (selectedTodo.done = true);
 
-  JSON.parse(localStorage.getItem("todos")).splice();
+  localStorage.setItem("todos", JSON.stringify(todos));
 }

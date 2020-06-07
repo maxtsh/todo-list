@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { getTodos, setDone } from "../../actions/index";
 
 function Todos() {
+  const [updateComponent, setUpdateComponent] = useState(false);
   const [optionModal, setOptionModal] = useState({ show: false, todoId: "" });
   const todos = getTodos();
 
@@ -10,6 +11,7 @@ function Todos() {
   }
 
   function handleDoneChange(todoId) {
+    setUpdateComponent(!updateComponent);
     setDone(todoId);
   }
 
@@ -24,6 +26,17 @@ function Todos() {
               <div className="todo-body-item-header">
                 <div className="todo-body-item-header-main">
                   <form className="todo-body-item-header-main-form">
+                    <label
+                      className="todo-body-item-header-main-form-label"
+                      htmlFor="done"
+                      onClick={() => handleDoneChange(todo.id)}
+                    >
+                      {todo.done ? (
+                        <i className="fas fa-check-square"></i>
+                      ) : (
+                        <i className="far fa-square"></i>
+                      )}
+                    </label>
                     <input
                       className="todo-body-item-header-main-form-input"
                       type="checkbox"
@@ -64,4 +77,4 @@ function Todos() {
   );
 }
 
-export default Todos;
+export default React.memo(Todos);

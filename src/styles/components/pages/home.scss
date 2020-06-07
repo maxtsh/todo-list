@@ -206,7 +206,20 @@ $light-blue: #8dc1dc;
                 &-form {
                   margin-right: 1rem;
 
+                  &-label {
+                    .fa-check-square {
+                      color: #179474;
+                      font-size: 200%;
+                    }
+
+                    .fa-square {
+                      color: $light-grey;
+                      font-size: 200%;
+                    }
+                  }
+
                   &-input {
+                    display: none;
                     width: 30px;
                     height: 30px;
                   }
