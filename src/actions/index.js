@@ -19,6 +19,10 @@ export function addTodo(todo) {
   }
 }
 
+export function editTodo(todoId) {
+  console.log(todoId);
+}
+
 export function deleteTodo(todoId) {
   const todos = JSON.parse(localStorage.getItem("todos"));
   const resultArr = todos.filter((todo) => todo.id !== todoId);
