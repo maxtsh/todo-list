@@ -3,7 +3,7 @@ import Calendar from "react-calendar";
 
 // Components
 import Todos from "../layouts/Todos";
-import AddTodoModal from "../layouts/AddTodoModal";
+import AddTodoModal from "../modals/AddTodoModal";
 
 function Home() {
   const [modal, setModal] = useState(false);

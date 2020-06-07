@@ -11,7 +11,7 @@ function AddTodoModal({ close }) {
     deadline: "",
   });
 
-  console.log("MODAL RENDER");
+  console.log("ADD MODAL RENDER");
 
   function handleCLose() {
     close();

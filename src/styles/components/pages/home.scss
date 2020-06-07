@@ -187,12 +187,53 @@ $light-blue: #8dc1dc;
 
         .todo-body {
           &-item {
+            position: relative;
             margin-top: 1rem;
             padding: 1rem;
             border: 1px solid $light-grey;
             border-radius: 1rem;
             display: flex;
             flex-direction: column;
+
+            &-options {
+              position: absolute;
+              top: -90px;
+              right: -5px;
+              width: 120px;
+              height: 100px;
+              color: #ffffff;
+              background-color: $dark-blue;
+              padding: 1rem;
+              border-radius: 0.5rem;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+
+              &-edit,
+              &-delete {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                cursor: pointer;
+
+                &-text {
+                  font-size: 100%;
+                  font-weight: 300;
+                }
+              }
+
+              .arrow {
+                position: absolute;
+                width: 11px;
+                height: 11px;
+                top: 95px;
+                right: 20px;
+                background-color: $dark-blue;
+                transform: rotate(45deg);
+                z-index: 1;
+              }
+            }
 
             &-header {
               display: flex;
