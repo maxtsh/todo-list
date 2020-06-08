@@ -30,11 +30,11 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #406590 !important;
+  background-color: #113a53 !important;
   border-radius: 1rem !important;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #3897f0 !important;
+  background-color: #162332 !important;
 }
 /*# sourceMappingURL=global.css.map */

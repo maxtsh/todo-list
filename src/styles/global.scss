@@ -20,6 +20,8 @@ $desire_yellow: #ffc107;
 $desire-green: #20bf6b;
 $desire-white: #eaf0f6;
 $desire-blue: #4370a4;
+$dark-blue: #113a53;
+$light-blue: #8dc1dc;
 
 * {
   margin: 0;
@@ -52,11 +54,11 @@ body {
   }
 
   &-thumb {
-    background-color: $blue !important;
+    background-color: $dark-blue !important;
     border-radius: 1rem !important;
 
     &:hover {
-      background-color: $sky-blue !important;
+      background-color: $darkest-blue !important;
     }
   }
 }
