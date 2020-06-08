@@ -41,3 +41,22 @@ body {
   font-size: 100%;
   font-weight: 400;
 }
+
+// Custom Scrollbar
+::-webkit-scrollbar {
+  width: 10px !important;
+
+  &-track {
+    border-radius: 1rem !important;
+    border: 1px solid #e8e8e8 !important;
+  }
+
+  &-thumb {
+    background-color: $blue !important;
+    border-radius: 1rem !important;
+
+    &:hover {
+      background-color: $sky-blue !important;
+    }
+  }
+}

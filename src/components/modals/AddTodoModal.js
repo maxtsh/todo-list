@@ -21,6 +21,7 @@ function AddTodoModal({ close }) {
     e.preventDefault();
     addTodo(todo);
     reset();
+    window.location.reload();
   }
 
   return (

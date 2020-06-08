@@ -19,4 +19,22 @@ body {
   font-size: 100%;
   font-weight: 400;
 }
+
+::-webkit-scrollbar {
+  width: 10px !important;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 1rem !important;
+  border: 1px solid #e8e8e8 !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #406590 !important;
+  border-radius: 1rem !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #3897f0 !important;
+}
 /*# sourceMappingURL=global.css.map */
