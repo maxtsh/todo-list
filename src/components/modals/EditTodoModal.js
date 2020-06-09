@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "../../hooks/useForm";
 import { editTodo } from "../../actions";
 
 function EditTodoModal({ close, oldTodo }) {
-  const [todo, change, reset] = useForm({
-    title: "",
-    done: false,
-    deadline: "",
+  const [errors, setErrors] = useState({ showError: false, message: "" });
+  const [todo, change] = useForm({
+    id: oldTodo.id,
+    title: oldTodo.title,
+    done: oldTodo.done,
+    deadline: oldTodo.deadline,
   });
+
+  useEffect(() => {
+    let errorTimeout;
+    if (errors.showError) {
+      errorTimeout = setTimeout(() => {
+        setErrors({ showError: false, message: "" });
+      }, 5000);
+    }
+
+    return () => clearTimeout(errorTimeout);
+  }, [errors]);
 
   function handleCLose() {
     close();
@@ -15,8 +28,12 @@ function EditTodoModal({ close, oldTodo }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    editTodo(todo);
-    reset();
+    try {
+      editTodo(todo);
+      window.location.reload();
+    } catch (err) {
+      setErrors({ showError: true, message: err.message });
+    }
   }
 
   return (
@@ -35,7 +52,7 @@ function EditTodoModal({ close, oldTodo }) {
                   type="text"
                   name="title"
                   onChange={change}
-                  value={oldTodo.title}
+                  value={todo.title}
                   required
                 />
                 <label htmlFor="title">
@@ -47,7 +64,7 @@ function EditTodoModal({ close, oldTodo }) {
                 <input
                   type="date"
                   name="deadline"
-                  value={oldTodo.deadline}
+                  value={todo.deadline}
                   required
                   onChange={change}
                 />
@@ -60,6 +77,9 @@ function EditTodoModal({ close, oldTodo }) {
                 <input type="submit" value="Edit" />
               </div>
             </form>
+            {errors.showError ? (
+              <p className="modal-body-error">{errors.message}</p>
+            ) : null}
           </div>
         </div>
       </div>

@@ -1,0 +1,9 @@
+.popup-container {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  z-index: 100;
+}
+/*# sourceMappingURL=popup.css.map */

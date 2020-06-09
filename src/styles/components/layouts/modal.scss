@@ -92,6 +92,8 @@ $desire-red: #eb3b5a;
           }
 
           input {
+            font-size: 110%;
+            font-weight: 400;
             width: 100%;
             margin-top: 0.5rem;
             padding: 2rem 1rem 0.2rem 0rem;
@@ -151,6 +153,15 @@ $desire-red: #eb3b5a;
         .switch:hover {
           color: $sky-blue;
         }
+      }
+
+      .modal-body-error {
+        font-size: 100%;
+        font-weight: 300;
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+        color: #fff;
+        background-color: $desire-red;
       }
     }
   }

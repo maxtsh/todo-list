@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "../../hooks/useForm";
 import { v4 as uuidv4 } from "uuid";
 import { addTodo } from "../../actions";
+import Popup from "../notification/Popup";
 
 function AddTodoModal({ close }) {
+  const [popup, setPopup] = useState({ show: false, type: "", message: "" });
   const [todo, change, reset] = useForm({
     id: uuidv4(),
     title: "",
     done: false,
     deadline: "",
   });
+
+  useEffect(() => {
+    let popupTimeout;
+    if (popup.show) {
+      popupTimeout = setTimeout(() => {
+        setPopup({ show: false, type: "", message: "" });
+      }, 5000);
+    }
+
+    return () => clearTimeout(popupTimeout);
+  }, [popup]);
 
   console.log("ADD MODAL RENDER");
 
@@ -19,13 +32,19 @@ function AddTodoModal({ close }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    addTodo(todo);
-    reset();
-    window.location.reload();
+
+    try {
+      addTodo(todo);
+      reset();
+      window.location.reload();
+    } catch (err) {
+      setPopup({ show: true, type: "error", message: err.message });
+    }
   }
 
   return (
     <>
+      {popup.show ? <Popup message={popup.message} type={popup.type} /> : null}
       <div className="overlay"></div>
       <div className="modal-container">
         <div className="modal-wrapper">
@@ -59,6 +78,9 @@ function AddTodoModal({ close }) {
                 <input type="submit" value="Add" />
               </div>
             </form>
+            {popup.show ? (
+              <p className="modal-body-error">{popup.message}</p>
+            ) : null}
           </div>
         </div>
       </div>

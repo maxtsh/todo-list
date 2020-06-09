@@ -9,6 +9,8 @@ import "./styles/global.css";
 import "./styles/components/pages/home.css";
 // Layouts
 import "./styles/components/layouts/modal.css";
+// Notification
+import "./styles/components/notification/popup.css";
 
 ReactDOM.render(
   <React.StrictMode>
