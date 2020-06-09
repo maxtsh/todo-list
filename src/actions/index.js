@@ -56,5 +56,5 @@ export function setDone(todoId) {
 function checkDate(todoDate) {
   const time = new Date(todoDate);
   if (time.getTime() <= Date.now())
-    throw new Error("You can't choose from past times");
+    throw new Error("Your time is in the past!");
 }

@@ -1,8 +1,25 @@
 .popup-container {
   position: absolute;
-  top: 50px;
+  top: 30px;
   right: 20px;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   z-index: 100;
+  width: 400px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .fas {
+    font-size: 140%;
+    color: #ffffff;
+    margin-right: 1rem;
+  }
+
+  .popup-message {
+    font-size: 120%;
+    font-weight: 400;
+  }
 }

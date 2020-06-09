@@ -8,7 +8,12 @@ function Popup({ message, type }) {
 
   return (
     <div style={style} className="popup-container">
-      <h1>{message}</h1>
+      {type === "error" ? (
+        <i className="fas fa-exclamation-circle"></i>
+      ) : (
+        <i className="fas fa-check-circle"></i>
+      )}
+      <h4 className="popup-message">{message}</h4>
     </div>
   );
 }

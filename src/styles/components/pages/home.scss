@@ -119,8 +119,8 @@ $light-blue: #8dc1dc;
       height: 95%;
 
       .todo-wrapper {
-        margin: 1rem 1rem;
-        padding: 2rem 1rem;
+        margin: 0.5rem 1rem;
+        padding: 1.5rem 1rem;
         height: inherit;
 
         .todo-header {
@@ -166,7 +166,7 @@ $light-blue: #8dc1dc;
               transition: all 0.2s ease-in-out;
 
               &:hover {
-                width: 100px;
+                width: 90px;
               }
             }
           }

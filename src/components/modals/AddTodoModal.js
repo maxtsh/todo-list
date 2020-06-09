@@ -36,7 +36,12 @@ function AddTodoModal({ close }) {
     try {
       addTodo(todo);
       reset();
-      window.location.reload();
+      setPopup({
+        show: true,
+        type: "success",
+        message: "Successfully created your new task.",
+      });
+      // window.location.reload();
     } catch (err) {
       setPopup({ show: true, type: "error", message: err.message });
     }
@@ -72,15 +77,12 @@ function AddTodoModal({ close }) {
                 <label htmlFor="deadline">
                   <span className="content"></span>
                 </label>
-                <i className="fas fa-history"></i>
+                {/* <i className="fas fa-history"></i> */}
               </div>
               <div className="login-footer">
                 <input type="submit" value="Add" />
               </div>
             </form>
-            {popup.show ? (
-              <p className="modal-body-error">{popup.message}</p>
-            ) : null}
           </div>
         </div>
       </div>

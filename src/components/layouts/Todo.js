@@ -1,12 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import EditTodoModal from "../modals/EditTodoModal";
 import { setDone, deleteTodo } from "../../actions/index";
+import Popup from "../notification/Popup";
 
 function Todo({ todo, updateComponent, setUpdateComponent }) {
+  const [popup, setPopup] = useState({ show: false, type: "", message: "" });
   const [modal, setModal] = useState(false);
   const [optionModal, setOptionModal] = useState({ show: false, todoId: "" });
 
   console.log("TODO RENDER");
+
+  useEffect(() => {
+    let popupTimeout;
+    if (popup.show) {
+      popupTimeout = setTimeout(() => {
+        setPopup({ show: false, type: "", message: "" });
+      }, 5000);
+    }
+
+    return () => clearTimeout(popupTimeout);
+  }, [popup]);
 
   function handleOptions(todoId) {
     setOptionModal({ show: !optionModal.show, todoId });
@@ -23,11 +36,17 @@ function Todo({ todo, updateComponent, setUpdateComponent }) {
 
   function handleDelete(todoId) {
     deleteTodo(todoId);
+    setPopup({
+      show: true,
+      type: "success",
+      message: "Successfully deleted",
+    });
     setUpdateComponent(!updateComponent);
   }
 
   return (
     <>
+      {popup.show ? <Popup message={popup.message} type={popup.type} /> : null}
       <div key={todo.id} className="todo-body-item">
         {optionModal.show ? (
           <div className="todo-body-item-options">

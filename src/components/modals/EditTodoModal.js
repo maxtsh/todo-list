@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "../../hooks/useForm";
 import { editTodo } from "../../actions";
+import Popup from "../notification/Popup";
 
 function EditTodoModal({ close, oldTodo }) {
-  const [errors, setErrors] = useState({ showError: false, message: "" });
+  const [popup, setPopup] = useState({ show: false, type: "", message: "" });
   const [todo, change] = useForm({
     id: oldTodo.id,
     title: oldTodo.title,
@@ -13,14 +14,14 @@ function EditTodoModal({ close, oldTodo }) {
 
   useEffect(() => {
     let errorTimeout;
-    if (errors.showError) {
+    if (popup.show) {
       errorTimeout = setTimeout(() => {
-        setErrors({ showError: false, message: "" });
+        setPopup({ show: false, message: "" });
       }, 5000);
     }
 
     return () => clearTimeout(errorTimeout);
-  }, [errors]);
+  }, [popup]);
 
   function handleCLose() {
     close();
@@ -28,16 +29,23 @@ function EditTodoModal({ close, oldTodo }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+
     try {
       editTodo(todo);
-      window.location.reload();
+      setPopup({
+        show: true,
+        type: "success",
+        message: "Successfully updated",
+      });
+      // window.location.reload();
     } catch (err) {
-      setErrors({ showError: true, message: err.message });
+      setPopup({ show: true, type: "error", message: err.message });
     }
   }
 
   return (
     <>
+      {popup.show ? <Popup message={popup.message} type={popup.type} /> : null}
       <div className="overlay"></div>
       <div className="modal-container">
         <div className="modal-wrapper">
@@ -71,15 +79,12 @@ function EditTodoModal({ close, oldTodo }) {
                 <label htmlFor="deadline">
                   <span className="content"></span>
                 </label>
-                <i className="fas fa-history"></i>
+                {/* <i className="fas fa-history"></i> */}
               </div>
               <div className="login-footer">
                 <input type="submit" value="Edit" />
               </div>
             </form>
-            {errors.showError ? (
-              <p className="modal-body-error">{errors.message}</p>
-            ) : null}
           </div>
         </div>
       </div>
