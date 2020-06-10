@@ -1,3 +1,5 @@
+$desire-green: #20bf6b;
+
 .popup-container {
   position: absolute;
   top: 30px;
@@ -16,6 +18,10 @@
     font-size: 140%;
     color: #ffffff;
     margin-right: 1rem;
+  }
+
+  .fa-check-circle {
+    color: $desire-green;
   }
 
   .popup-message {

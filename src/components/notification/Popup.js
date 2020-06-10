@@ -18,4 +18,4 @@ function Popup({ message, type }) {
   );
 }
 
-export default Popup;
+export default React.memo(Popup);

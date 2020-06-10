@@ -1,8 +1,24 @@
 // Get all todos
-export function getTodos() {
+export function getTodos(date) {
+  // Geting the requested date
+  const time = new Date(date);
+
+  // Seprating day, month and year of the requested date
+  const day = time.getDate();
+  const month = time.getMonth() + 1;
+  const year = time.getFullYear();
+
+  // Changing the requested format to standart date format
+  const standardFormat = `${year}-${String(month).padStart(2, 0)}-${String(
+    day
+  ).padStart(2, 0)}`;
+
+  // Fetching the todos with respect to their requested date
   let todos;
   if (JSON.parse(localStorage.getItem("todos"))) {
-    todos = JSON.parse(localStorage.getItem("todos"));
+    todos = JSON.parse(localStorage.getItem("todos")).filter(
+      (todo) => todo.deadline === standardFormat
+    );
   } else {
     todos = [];
   }

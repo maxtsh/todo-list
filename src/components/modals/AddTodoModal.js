@@ -27,7 +27,7 @@ function AddTodoModal({ close }) {
   console.log("ADD MODAL RENDER");
 
   function handleCLose() {
-    close();
+    close(false);
   }
 
   function handleSubmit(e) {
@@ -41,7 +41,6 @@ function AddTodoModal({ close }) {
         type: "success",
         message: "Successfully created your new task.",
       });
-      // window.location.reload();
     } catch (err) {
       setPopup({ show: true, type: "error", message: err.message });
     }

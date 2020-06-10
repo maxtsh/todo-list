@@ -3,7 +3,7 @@ import { useForm } from "../../hooks/useForm";
 import { editTodo } from "../../actions";
 import Popup from "../notification/Popup";
 
-function EditTodoModal({ close, oldTodo }) {
+function EditTodoModal({ reload, reloadValue, setModal, oldTodo }) {
   const [popup, setPopup] = useState({ show: false, type: "", message: "" });
   const [todo, change] = useForm({
     id: oldTodo.id,
@@ -24,7 +24,7 @@ function EditTodoModal({ close, oldTodo }) {
   }, [popup]);
 
   function handleCLose() {
-    close();
+    setModal(false);
   }
 
   function handleSubmit(e) {
@@ -37,7 +37,7 @@ function EditTodoModal({ close, oldTodo }) {
         type: "success",
         message: "Successfully updated",
       });
-      // window.location.reload();
+      reload(!reloadValue);
     } catch (err) {
       setPopup({ show: true, type: "error", message: err.message });
     }
@@ -50,7 +50,7 @@ function EditTodoModal({ close, oldTodo }) {
       <div className="modal-container">
         <div className="modal-wrapper">
           <div className="modal-header">
-            <h1 className="modal-header-title">Add a new task:</h1>
+            <h1 className="modal-header-title">Edit this task:</h1>
             <i className="far fa-times-circle" onClick={handleCLose}></i>
           </div>
           <div className="modal-body">

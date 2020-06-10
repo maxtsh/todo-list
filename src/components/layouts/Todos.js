@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { getTodos } from "../../actions/index";
 import Todo from "./Todo";
 
-function Todos() {
+function Todos({ date }) {
   const [updateComponent, setUpdateComponent] = useState(false);
-  const todos = getTodos();
+  const todos = getTodos(date);
 
   console.log("TODOS RENDER");
 
@@ -18,8 +18,8 @@ function Todos() {
             <Todo
               key={todo.id}
               todo={todo}
-              updateComponent={updateComponent}
-              setUpdateComponent={setUpdateComponent}
+              reload={setUpdateComponent}
+              reloadValue={updateComponent}
             />
           ))
       ) : (

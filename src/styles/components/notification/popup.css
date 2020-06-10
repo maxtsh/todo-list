@@ -28,6 +28,10 @@
   margin-right: 1rem;
 }
 
+.popup-container .fa-check-circle {
+  color: #20bf6b;
+}
+
 .popup-container .popup-message {
   font-size: 120%;
   font-weight: 400;

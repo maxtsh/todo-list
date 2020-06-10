@@ -3,7 +3,7 @@ import EditTodoModal from "../modals/EditTodoModal";
 import { setDone, deleteTodo } from "../../actions/index";
 import Popup from "../notification/Popup";
 
-function Todo({ todo, updateComponent, setUpdateComponent }) {
+function Todo({ todo, reload, reloadValue }) {
   const [popup, setPopup] = useState({ show: false, type: "", message: "" });
   const [modal, setModal] = useState(false);
   const [optionModal, setOptionModal] = useState({ show: false, todoId: "" });
@@ -27,11 +27,12 @@ function Todo({ todo, updateComponent, setUpdateComponent }) {
 
   function handleDoneChange(todoId) {
     setDone(todoId);
-    setUpdateComponent(!updateComponent);
+    reload(!reloadValue);
   }
 
-  function handleEdit(todoId) {
+  function handleEdit() {
     setModal(true);
+    setOptionModal({ ...optionModal, show: false });
   }
 
   function handleDelete(todoId) {
@@ -41,7 +42,7 @@ function Todo({ todo, updateComponent, setUpdateComponent }) {
       type: "success",
       message: "Successfully deleted",
     });
-    setUpdateComponent(!updateComponent);
+    reload(!reloadValue);
   }
 
   return (
@@ -51,10 +52,7 @@ function Todo({ todo, updateComponent, setUpdateComponent }) {
         {optionModal.show ? (
           <div className="todo-body-item-options">
             <div className="arrow"></div>
-            <div
-              className="todo-body-item-options-edit"
-              onClick={() => handleEdit(todo.id)}
-            >
+            <div className="todo-body-item-options-edit" onClick={handleEdit}>
               <p className="todo-body-item-options-edit-text">Edit</p>
               <i className="far fa-edit"></i>
             </div>
@@ -112,7 +110,14 @@ function Todo({ todo, updateComponent, setUpdateComponent }) {
           </p>
         </div>
       </div>
-      {modal ? <EditTodoModal close={setModal} oldTodo={todo} /> : null}
+      {modal ? (
+        <EditTodoModal
+          reload={reload}
+          reloadValue={reloadValue}
+          setModal={setModal}
+          oldTodo={todo}
+        />
+      ) : null}
     </>
   );
 }

@@ -8,11 +8,16 @@ import AddTodoModal from "../modals/AddTodoModal";
 
 function Home() {
   const [modal, setModal] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(Date.now());
 
   console.log("HOME RENDER");
 
   function toggleModal() {
     setModal(!modal);
+  }
+
+  function handleCalenderDay(value, event) {
+    setSelectedDate(value);
   }
 
   return (
@@ -21,7 +26,10 @@ function Home() {
         <div className="wrapper">
           <div className="calendar-container">
             <div className="calendar-body">
-              <Calendar calendarType="ISO 8601" />
+              <Calendar
+                calendarType="ISO 8601"
+                onClickDay={handleCalenderDay}
+              />
             </div>
           </div>
           <div className="todo-container">
@@ -58,7 +66,7 @@ function Home() {
                   These are your tasks for today.
                 </p>
               </div>
-              <Todos />
+              <Todos date={selectedDate} />
               <div className="todo-add">
                 <button className="todo-add-btn" onClick={toggleModal}>
                   <i className="fas fa-plus"></i>
