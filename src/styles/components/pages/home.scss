@@ -18,7 +18,7 @@ $light-blue: #8dc1dc;
     height: 100%;
 
     .calendar-container {
-      flex-basis: 70%;
+      flex-basis: 65%;
       display: flex;
       flex-direction: column;
 
@@ -119,7 +119,7 @@ $light-blue: #8dc1dc;
 
     .todo-container {
       position: relative;
-      flex-basis: 30%;
+      flex-basis: 35%;
       border-radius: 3rem;
       border: 10px solid rgba(0, 0, 0, 1);
       background-color: #ffffff;
@@ -159,6 +159,30 @@ $light-blue: #8dc1dc;
             background-color: $light-grey;
             border-radius: 50%;
             margin-left: 1rem;
+          }
+        }
+
+        .todo-iphone-left {
+          position: absolute;
+          top: 10px;
+          left: 40px;
+        }
+
+        .todo-iphone-right {
+          position: absolute;
+          top: 5px;
+          right: 30px;
+
+          .fas {
+            font-size: 100%;
+          }
+
+          .fa-wifi {
+            margin-left: 0.5rem;
+          }
+
+          .fa-battery-half {
+            margin-left: 0.5rem;
           }
         }
 
@@ -380,7 +404,7 @@ $light-blue: #8dc1dc;
   .snow-ground-img {
     position: absolute;
     bottom: 0;
-    width: 70%;
+    width: 65%;
     height: 100px;
     opacity: 0.8;
   }
@@ -391,7 +415,7 @@ $light-blue: #8dc1dc;
   }
 
   .snow-layer {
-    width: 70%;
+    width: 65%;
 
     .snow {
       $total: 70;

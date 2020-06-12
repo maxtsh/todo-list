@@ -5,6 +5,7 @@ import ErrorBoundary from "../../ErrorBoundary/ErrorBoundary";
 // Components
 import Todos from "../layouts/Todos";
 import AddTodoModal from "../modals/AddTodoModal";
+import LiveClock from "../layouts/LiveCLock";
 
 // Actions
 import { getTaskfulDays } from "../../actions/index";
@@ -54,6 +55,14 @@ function Home() {
               <div className="todo-iphone-face">
                 <div className="todo-iphone-face-line"></div>
                 <div className="todo-iphone-face-camera"></div>
+              </div>
+              <div className="todo-iphone-left">
+                <LiveClock />
+              </div>
+              <div className="todo-iphone-right">
+                ....
+                <i className="fas fa-wifi"></i>
+                <i className="fas fa-battery-half"></i>
               </div>
               <div className="todo-header">
                 <div className="todo-header-options">
