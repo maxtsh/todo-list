@@ -2,6 +2,21 @@ import React, { useState } from "react";
 import { getTodos } from "../../actions/index";
 import Todo from "./Todo";
 
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
 function Todos({ date }) {
   const [updateComponent, setUpdateComponent] = useState(false);
   const todos = getTodos(date);
@@ -23,7 +38,15 @@ function Todos({ date }) {
             />
           ))
       ) : (
-        <h1 className="todo-body-notask"> There are no tasks available now.</h1>
+        <h1 className="todo-body-notask">
+          {" "}
+          There are no tasks available on{" "}
+          {`${months[date.getMonth()]} ${String(date.getDate()).padStart(
+            2,
+            0
+          )}`}
+          .
+        </h1>
       )}
     </div>
   );

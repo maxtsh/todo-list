@@ -1,4 +1,4 @@
-// Get all todos
+// Get todos based on the selected date
 export function getTodos(date) {
   // Geting the requested date
   const time = new Date(date);
@@ -69,6 +69,15 @@ export function setDone(todoId) {
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 
+// Geting the active days with at least one task in them
+export function getTaskfulDays() {
+  const todos = JSON.parse(localStorage.getItem("todos"));
+  const activeDays = todos.map((todo) => Number(todo.deadline.slice(8, 10)));
+
+  return activeDays;
+}
+
+// Utility function to check if selected dates are from now and to future
 function checkDate(todoDate) {
   const time = new Date(todoDate);
   if (time.getTime() <= Date.now())

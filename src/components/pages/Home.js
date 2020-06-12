@@ -6,6 +6,9 @@ import ErrorBoundary from "../../ErrorBoundary/ErrorBoundary";
 import Todos from "../layouts/Todos";
 import AddTodoModal from "../modals/AddTodoModal";
 
+// Actions
+import { getTaskfulDays } from "../../actions/index";
+
 function Home() {
   const [modal, setModal] = useState(false);
   const [selectedDate, setSelectedDate] = useState(Date.now());
@@ -20,6 +23,19 @@ function Home() {
     setSelectedDate(value);
   }
 
+  function handleTileClass({ date, view }) {
+    const time = new Date();
+    const activeDays = getTaskfulDays();
+
+    return activeDays.map((day) => {
+      return view === "month" &&
+        time.getMonth() === date.getMonth() &&
+        date.getDate() === day
+        ? "circle"
+        : null;
+    });
+  }
+
   return (
     <ErrorBoundary>
       <div className="container">
@@ -29,11 +45,16 @@ function Home() {
               <Calendar
                 calendarType="ISO 8601"
                 onClickDay={handleCalenderDay}
+                tileClassName={handleTileClass}
               />
             </div>
           </div>
           <div className="todo-container">
             <div className="todo-wrapper">
+              <div className="todo-iphone-face">
+                <div className="todo-iphone-face-line"></div>
+                <div className="todo-iphone-face-camera"></div>
+              </div>
               <div className="todo-header">
                 <div className="todo-header-options">
                   <div className="todo-header-options-cog">

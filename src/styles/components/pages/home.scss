@@ -90,9 +90,15 @@ $light-blue: #8dc1dc;
                     }
                   }
 
+                  .circle {
+                    padding: 1rem;
+                    border-radius: 50%;
+                    border: 1px solid #ffffff;
+                  }
+
                   button {
                     font-size: 1.5rem;
-                    font-weight: 700;
+                    font-weight: 400;
                     font-family: "Roboto", sans-serif;
                     color: #ffffff;
                     background-color: transparent;
@@ -112,8 +118,10 @@ $light-blue: #8dc1dc;
     }
 
     .todo-container {
+      position: relative;
       flex-basis: 30%;
       border-radius: 3rem;
+      border: 10px solid rgba(0, 0, 0, 1);
       background-color: #ffffff;
       margin: 1rem;
       height: 95%;
@@ -122,6 +130,37 @@ $light-blue: #8dc1dc;
         margin: 0.5rem 1rem;
         padding: 1.5rem 1rem;
         height: inherit;
+
+        .todo-iphone-face {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 50%;
+          height: 40px;
+          background-color: rgba(0, 0, 0, 1);
+          border-bottom-left-radius: 2rem;
+          border-bottom-right-radius: 2rem;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+
+          &-line {
+            width: 60px;
+            height: 8px;
+            border-radius: 2rem;
+            background-color: rgba($color: #ffffff, $alpha: 0.9);
+          }
+
+          &-camera {
+            width: 12px;
+            height: 12px;
+            background-color: $light-grey;
+            border-radius: 50%;
+            margin-left: 1rem;
+          }
+        }
 
         .todo-header {
           display: flex;
