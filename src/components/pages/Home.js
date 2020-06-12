@@ -14,8 +14,6 @@ function Home() {
   const [modal, setModal] = useState(false);
   const [selectedDate, setSelectedDate] = useState(Date.now());
 
-  console.log("HOME RENDER");
-
   function toggleModal() {
     setModal(!modal);
   }
@@ -35,6 +33,12 @@ function Home() {
         ? "circle"
         : null;
     });
+  }
+
+  // Looping through 50 snow drops
+  let snowDrops = [];
+  for (let i = 1; i <= 50; i++) {
+    snowDrops.push(<div className="snow">❄</div>);
   }
 
   return (
@@ -105,84 +109,14 @@ function Home() {
             </div>
           </div>
         </div>
-
         <img
           className="snow-ground-img"
           src={require("../../assets/images/winter-ground.png")}
           alt=""
         />
-
         {modal ? <AddTodoModal close={toggleModal} /> : null}
-
         <div className="snow-layer">
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
-          <div className="snow">❄</div>
+          {snowDrops.map((snowDrop) => snowDrop)}
         </div>
       </div>
     </ErrorBoundary>

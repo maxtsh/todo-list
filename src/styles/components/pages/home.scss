@@ -83,7 +83,7 @@ $light-blue: #8dc1dc;
 
                   .react-calendar__tile--now {
                     abbr {
-                      padding: 1rem;
+                      padding: 0.5rem;
                       border-radius: 50%;
                       background-color: #ffffff;
                       color: $dark-blue;
@@ -91,9 +91,13 @@ $light-blue: #8dc1dc;
                   }
 
                   .circle {
-                    padding: 1rem;
-                    border-radius: 50%;
-                    border: 1px solid #ffffff;
+                    border: none !important;
+
+                    abbr {
+                      padding: 0.5rem;
+                      border-radius: 50% !important;
+                      border: 1px solid #ffffff !important;
+                    }
                   }
 
                   button {
