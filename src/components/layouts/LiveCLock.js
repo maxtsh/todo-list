@@ -11,9 +11,7 @@ function getClock() {
 }
 
 function LiveClock() {
-  const [clock, setClock] = useState();
-
-  console.log("LIVE COCK");
+  const [clock, setClock] = useState(getClock());
 
   useEffect(() => {
     const timeInterval = setInterval(() => {
@@ -26,4 +24,4 @@ function LiveClock() {
   return <h4>{clock}</h4>;
 }
 
-export default LiveClock;
+export default React.memo(LiveClock);

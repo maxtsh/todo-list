@@ -3,6 +3,21 @@ import EditTodoModal from "../modals/EditTodoModal";
 import { setDone, deleteTodo } from "../../actions/index";
 import Popup from "../notification/Popup";
 
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
 function Todo({ todo, reload, reloadValue }) {
   const [popup, setPopup] = useState({ show: false, type: "", message: "" });
   const [modal, setModal] = useState(false);
@@ -44,6 +59,10 @@ function Todo({ todo, reload, reloadValue }) {
     });
     reload(!reloadValue);
   }
+
+  const year = todo.deadline.slice(0, 4);
+  const month = todo.deadline.slice(5, 7) - 1;
+  const day = todo.deadline.slice(8, 10);
 
   return (
     <>
@@ -105,7 +124,7 @@ function Todo({ todo, reload, reloadValue }) {
           <p className="todo-body-item-footer-text">
             Due Date:{" "}
             <span className="todo-body-item-footer-text-time">
-              {todo.deadline}
+              {`${months[Number(month)]} ${day}, ${year}`}
             </span>
           </p>
         </div>

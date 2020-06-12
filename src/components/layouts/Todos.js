@@ -23,6 +23,12 @@ function Todos({ date }) {
 
   console.log("TODOS RENDER");
 
+  const fullDate = new Date(date);
+
+  const year = fullDate.getFullYear();
+  const month = months[fullDate.getMonth()];
+  const day = String(fullDate.getDate()).padStart(2, 0);
+
   return (
     <div className="todo-body">
       {todos.length !== 0 ? (
@@ -39,13 +45,7 @@ function Todos({ date }) {
           ))
       ) : (
         <h1 className="todo-body-notask">
-          {" "}
-          There are no tasks available on{" "}
-          {`${months[date.getMonth()]} ${String(date.getDate()).padStart(
-            2,
-            0
-          )}`}
-          .
+          There are no tasks available on {`${month} ${day}, ${year}`}.
         </h1>
       )}
     </div>
