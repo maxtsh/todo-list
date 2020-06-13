@@ -23,12 +23,16 @@ function Home() {
   }
 
   function handleTileClass({ date, view }) {
-    const time = new Date();
     const activeDays = getTaskfulDays();
 
-    return activeDays.map((day) => {
+    return activeDays.map((eachDay) => {
+      const year = Number(eachDay.slice(0, 4));
+      const month = Number(eachDay.slice(5, 7));
+      const day = Number(eachDay.slice(8, 10));
+
       return view === "month" &&
-        time.getMonth() === date.getMonth() &&
+        date.getFullYear() === year &&
+        date.getMonth() + 1 === month &&
         date.getDate() === day
         ? "circle"
         : null;
@@ -38,7 +42,11 @@ function Home() {
   // Looping through 50 snow drops
   let snowDrops = [];
   for (let i = 1; i <= 50; i++) {
-    snowDrops.push(<div className="snow">❄</div>);
+    snowDrops.push(
+      <div key={i} className="snow">
+        ❄
+      </div>
+    );
   }
 
   return (
