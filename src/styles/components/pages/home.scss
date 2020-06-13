@@ -22,14 +22,6 @@ $light-blue: #8dc1dc;
       display: flex;
       flex-direction: column;
 
-      .calendar-header {
-        font-family: "Roboto", sans-serif;
-        text-align: center;
-        color: #fff;
-        font-size: 150%;
-        font-weight: 900;
-      }
-
       .calendar-body {
         height: 100%;
 
@@ -56,7 +48,7 @@ $light-blue: #8dc1dc;
               cursor: pointer;
               color: #ffffff;
               font-size: 3rem;
-              margin: 1rem;
+              margin: 0rem 1rem;
               border: none;
               outline: none;
               background-color: transparent;
@@ -418,46 +410,445 @@ $light-blue: #8dc1dc;
     @return $random_range;
   }
 
-  .snow-layer {
-    width: 65%;
+  .snow {
+    $total: 53;
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    color: #ffffff;
 
-    .snow {
-      $total: 70;
-      position: absolute;
-      top: 0;
-      width: 10px;
-      height: 10px;
-      color: #ffffff;
-      // background: white;
-      // border-radius: 50%;
+    @for $i from 1 through $total {
+      $random-x: random(1000000) * 0.0001vw;
+      $random-offset: random_range(-100000, 100000) * 0.0001vw;
+      $random-x-end: $random-x + $random-offset;
+      $random-x-end-yoyo: $random-x + ($random-offset / 2);
+      $random-yoyo-time: random_range(30000, 80000) / 100000;
+      $random-yoyo-y: $random-yoyo-time * 100vh;
+      $random-scale: random(10000) * 0.00017;
+      $fall-duration: random_range(10, 30) * 1s;
+      $fall-delay: random(30) * -1s;
 
-      @for $i from 1 through $total {
-        $random-x: random(1000000) * 0.0001vw;
-        $random-offset: random_range(-100000, 100000) * 0.0001vw;
-        $random-x-end: $random-x + $random-offset;
-        $random-x-end-yoyo: $random-x + ($random-offset / 2);
-        $random-yoyo-time: random_range(30000, 80000) / 100000;
-        $random-yoyo-y: $random-yoyo-time * 100vh;
-        $random-scale: random(10000) * 0.00017;
-        $fall-duration: random_range(10, 30) * 1s;
-        $fall-delay: random(30) * -1s;
+      &:nth-child(#{$i}) {
+        opacity: random(10000) * 0.0001;
+        transform: translate($random-x, -10px) scale($random-scale);
+        animation: fall-#{$i} $fall-duration $fall-delay linear infinite;
+      }
 
-        &:nth-child(#{$i}) {
-          opacity: random(10000) * 0.0001;
-          transform: translate($random-x, -10px) scale($random-scale);
-          animation: fall-#{$i} $fall-duration $fall-delay linear infinite;
+      @keyframes fall-#{$i} {
+        #{percentage($random-yoyo-time)} {
+          transform: translate($random-x-end, $random-yoyo-y)
+            scale($random-scale);
         }
 
-        @keyframes fall-#{$i} {
-          #{percentage($random-yoyo-time)} {
-            transform: translate($random-x-end, $random-yoyo-y)
-              scale($random-scale);
-          }
+        to {
+          transform: translate($random-x-end-yoyo, 220vh) scale($random-scale);
+        }
+      }
+    }
+  }
+}
 
-          to {
-            transform: translate($random-x-end-yoyo, 90vh) scale($random-scale);
+// ******** Responsive Media Queries
+
+// ** Mixins
+
+@mixin small-phone {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin large-phone {
+  @media (max-width: 580px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin small-desktop {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin tv-extra-large {
+  @media (min-width: 1201px) and (max-width: 2160px) {
+    @content;
+  }
+}
+
+// ** Media Queries
+
+// 1200 To 2160
+@include tv-extra-large {
+  .container {
+    .wrapper {
+      .calendar-container {
+        .calendar-body {
+          .react-calendar {
+            .react-calendar__navigation {
+              margin-bottom: 0.5rem;
+            }
           }
         }
+      }
+
+      .todo-container {
+        .todo-wrapper {
+          padding: 1.5rem 0.5rem;
+
+          .todo-iphone-face {
+            width: 45%;
+            height: 35px;
+          }
+
+          .todo-header {
+            &-avatar {
+              &-img {
+                width: 60px;
+
+                &:hover {
+                  width: 70px;
+                }
+              }
+            }
+          }
+
+          .todo-intro {
+            &-title {
+              font-size: 160%;
+              font-weight: 700;
+            }
+
+            &-text {
+              margin-top: 0.6rem;
+              font-size: 120%;
+            }
+          }
+
+          .todo-add {
+            margin-top: 0.5rem;
+
+            .todo-add-btn {
+              width: 60px;
+              height: 60px;
+
+              .fas {
+                font-size: 190%;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .snow-ground-img {
+      height: 60px;
+    }
+  }
+}
+
+// 1024 To 1200
+@include large-desktop {
+  .container {
+    .wrapper {
+      .calendar-container {
+        flex-basis: 55%;
+
+        .calendar-body {
+          .react-calendar {
+            .react-calendar__navigation {
+              margin-bottom: 0.5rem;
+
+              .react-calendar__navigation__label {
+                font-size: 1.3rem;
+                font-weight: 500;
+              }
+
+              button {
+                font-size: 2.5rem;
+              }
+            }
+            .react-calendar__viewContainer {
+              .react-calendar__month-view {
+                div {
+                  .react-calendar__month-view__weekdays {
+                    font-size: 1.2rem;
+                  }
+                  .react-calendar__month-view__days {
+                    height: 85vh;
+
+                    button {
+                      font-size: 1.2rem;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .todo-container {
+        flex-basis: 45%;
+        border: 8px solid rgba(0, 0, 0, 1);
+
+        .todo-wrapper {
+          padding: 1.5rem 0.5rem;
+
+          .todo-iphone-face {
+            width: 40%;
+            height: 30px;
+
+            &-line {
+              width: 60px;
+              height: 6px;
+            }
+
+            &-camera {
+              width: 11px;
+              height: 11px;
+            }
+          }
+
+          .todo-iphone-left {
+            position: absolute;
+            top: 10px;
+            left: 40px;
+          }
+
+          .todo-iphone-right {
+            position: absolute;
+            top: 5px;
+            right: 30px;
+
+            .fas {
+              font-size: 100%;
+            }
+
+            .fa-wifi {
+              margin-left: 0.5rem;
+            }
+
+            .fa-battery-half {
+              margin-left: 0.5rem;
+            }
+          }
+
+          .todo-header {
+            &-avatar {
+              &-img {
+                width: 50px;
+
+                &:hover {
+                  width: 70px;
+                }
+              }
+            }
+          }
+
+          .todo-intro {
+            margin-top: 0.5rem 0rem;
+
+            &-title {
+              font-size: 150%;
+              font-weight: 700;
+            }
+
+            &-text {
+              margin-top: 0.5rem;
+              font-size: 110%;
+              font-weight: 500;
+            }
+          }
+
+          .todo-body {
+            padding-right: 0.3rem;
+
+            &-item {
+              margin-top: 0.5rem;
+              padding: 0.8rem;
+
+              &-options {
+                top: 5px;
+                right: 38px;
+                width: 100px;
+                height: 70px;
+                padding: 0.5rem;
+
+                &-edit,
+                &-delete {
+                  &-text {
+                    font-size: 90%;
+                    font-weight: 300;
+                  }
+                }
+
+                .arrow {
+                  position: absolute;
+                  width: 11px;
+                  height: 11px;
+                  top: 12px;
+                  right: -5px;
+                  background-color: $dark-blue;
+                  transform: rotate(45deg);
+                  z-index: 1;
+                }
+              }
+
+              &-header {
+                &-main {
+                  &-form {
+                    margin-right: 1rem;
+
+                    &-label {
+                      .fa-check-square {
+                        font-size: 150%;
+                      }
+
+                      .fa-square {
+                        font-size: 150%;
+                      }
+                    }
+
+                    &-input {
+                      width: 20px;
+                      height: 20px;
+                    }
+                  }
+
+                  &-title {
+                    font-size: 110%;
+                    font-weight: 700;
+                  }
+                }
+
+                &-options {
+                  .fas {
+                    font-size: 100%;
+                  }
+                }
+              }
+
+              &-footer {
+                &-text {
+                  &-time {
+                    font-weight: 400;
+                  }
+                }
+              }
+            }
+
+            &-notask {
+              margin-top: 2rem;
+              font-size: 100%;
+              font-weight: 500;
+            }
+          }
+
+          .todo-add {
+            margin-top: 0.3rem;
+
+            .todo-add-btn {
+              width: 65px;
+              height: 65px;
+
+              .fas {
+                font-size: 180%;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .snow-ground-img {
+      width: 55%;
+      height: 40px;
+    }
+  }
+}
+
+// 768 To 1024
+@include small-desktop {
+  .container {
+    width: 100%;
+    height: 100%;
+
+    .wrapper {
+      flex-direction: column;
+
+      .calendar-container {
+        flex-basis: 100%;
+      }
+
+      .todo-container {
+        width: 80%;
+
+        height: 900px;
+
+        .todo-wrapper {
+          height: 100%;
+        }
+      }
+    }
+
+    .snow-ground-img {
+      position: relative;
+      bottom: -5px;
+      width: 100%;
+      height: 30px;
+    }
+  }
+}
+
+// 580 To 768
+@include tablet {
+  .container {
+    .wrapper {
+      .todo-container {
+        width: 90%;
+        height: 900px;
+
+        .todo-wrapper {
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+// 480 To 580
+@include large-phone {
+  .container {
+    .wrapper {
+      .todo-container {
+        width: 95%;
+        height: 900px;
+      }
+    }
+  }
+}
+
+// 320 To 480
+@include small-phone {
+  .container {
+    .wrapper {
+      .todo-container {
+        width: 100%;
+        height: 800px;
       }
     }
   }

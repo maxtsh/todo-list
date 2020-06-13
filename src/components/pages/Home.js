@@ -120,12 +120,11 @@ function Home() {
         <img
           className="snow-ground-img"
           src={require("../../assets/images/winter-ground.png")}
-          alt=""
+          alt="snow-ground"
         />
+
         {modal ? <AddTodoModal close={toggleModal} /> : null}
-        <div className="snow-layer">
-          {snowDrops.map((snowDrop) => snowDrop)}
-        </div>
+        {snowDrops.map((snowDrop) => snowDrop)}
       </div>
     </ErrorBoundary>
   );
