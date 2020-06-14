@@ -64,18 +64,21 @@ function Home() {
           </div>
           <div className="todo-container">
             <div className="todo-wrapper">
-              <div className="todo-iphone-face">
-                <div className="todo-iphone-face-line"></div>
-                <div className="todo-iphone-face-camera"></div>
+              <div className="todo-iphone">
+                <div className="todo-iphone-face">
+                  <div className="todo-iphone-face-line"></div>
+                  <div className="todo-iphone-face-camera"></div>
+                </div>
+                <div className="todo-iphone-left">
+                  <LiveClock />
+                </div>
+                <div className="todo-iphone-right">
+                  ....
+                  <i className="fas fa-wifi"></i>
+                  <i className="fas fa-battery-half"></i>
+                </div>
               </div>
-              <div className="todo-iphone-left">
-                <LiveClock />
-              </div>
-              <div className="todo-iphone-right">
-                ....
-                <i className="fas fa-wifi"></i>
-                <i className="fas fa-battery-half"></i>
-              </div>
+
               <div className="todo-header">
                 <div className="todo-header-options">
                   <div className="todo-header-options-cog">

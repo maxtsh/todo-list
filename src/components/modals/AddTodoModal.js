@@ -76,7 +76,6 @@ function AddTodoModal({ close }) {
                 <label htmlFor="deadline">
                   <span className="content"></span>
                 </label>
-                {/* <i className="fas fa-history"></i> */}
               </div>
               <div className="login-footer">
                 <input type="submit" value="Add" />
