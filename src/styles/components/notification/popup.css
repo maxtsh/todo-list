@@ -5,7 +5,7 @@
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   z-index: 100;
-  width: 400px;
+  width: 600px;
   height: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -35,5 +35,47 @@
 .popup-container .popup-message {
   font-size: 120%;
   font-weight: 400;
+}
+
+@media (max-width: 1024px) {
+  .popup-container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    padding: 1rem;
+    width: 500px;
+    height: 30px;
+  }
+  .popup-container .fas {
+    font-size: 120%;
+    margin-right: 0.5rem;
+  }
+  .popup-container .popup-message {
+    font-size: 100%;
+    font-weight: 400;
+  }
+}
+
+@media (max-width: 580px) {
+  .popup-container {
+    width: 400px;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .popup-container {
+    width: 300px;
+  }
+  .fas {
+    font-size: 110%;
+    margin-right: 0.2rem;
+  }
+  .popup-message {
+    font-size: 90%;
+    font-weight: 300;
+  }
 }
 /*# sourceMappingURL=popup.css.map */

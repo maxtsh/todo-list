@@ -7,7 +7,7 @@ $desire-green: #20bf6b;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   z-index: 100;
-  width: 400px;
+  width: 600px;
   height: 40px;
   display: flex;
   flex-direction: row;
@@ -27,5 +27,73 @@ $desire-green: #20bf6b;
   .popup-message {
     font-size: 120%;
     font-weight: 400;
+  }
+}
+
+// ******** Responsive Media Queries
+// ** Mixins
+
+@mixin small-phone {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin large-phone {
+  @media (max-width: 580px) {
+    @content;
+  }
+}
+
+@mixin small-desktop {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+// ** Media Queries
+
+@include small-desktop {
+  .popup-container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem;
+    width: 500px;
+    height: 30px;
+
+    .fas {
+      font-size: 120%;
+      margin-right: 0.5rem;
+    }
+
+    .popup-message {
+      font-size: 100%;
+      font-weight: 400;
+    }
+  }
+}
+
+@include large-phone {
+  .popup-container {
+    width: 400px;
+    padding: 1.5rem;
+  }
+}
+
+@include small-phone {
+  .popup-container {
+    width: 300px;
+  }
+
+  .fas {
+    font-size: 110%;
+    margin-right: 0.2rem;
+  }
+
+  .popup-message {
+    font-size: 90%;
+    font-weight: 300;
   }
 }
