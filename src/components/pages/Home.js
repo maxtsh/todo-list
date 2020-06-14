@@ -104,9 +104,7 @@ function Home() {
               </div>
               <div className="todo-intro">
                 <h2 className="todo-intro-title">Hello, Max</h2>
-                <p className="todo-intro-text">
-                  These are your tasks for today.
-                </p>
+                <p className="todo-intro-text">These are your active tasks.</p>
               </div>
               <Todos date={selectedDate} />
               <div className="todo-add">

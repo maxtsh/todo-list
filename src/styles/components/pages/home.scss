@@ -478,7 +478,7 @@ $light-blue: #8dc1dc;
 }
 
 @mixin large-desktop {
-  @media (max-width: 1200px) {
+  @media (min-width: 1025px) and (max-width: 1200px) {
     @content;
   }
 }
@@ -792,15 +792,110 @@ $light-blue: #8dc1dc;
 
       .calendar-container {
         flex-basis: 100%;
+
+        .calendar-body {
+          .react-calendar {
+            .react-calendar__navigation {
+              .react-calendar__navigation__label {
+                font-size: 1.4rem;
+                font-weight: 500;
+              }
+
+              button {
+                font-size: 2.5rem;
+              }
+            }
+            .react-calendar__viewContainer {
+              .react-calendar__month-view {
+                div {
+                  .react-calendar__month-view__weekdays {
+                    font-size: 1.2rem;
+                  }
+                  .react-calendar__month-view__days {
+                    height: 100vh;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
 
       .todo-container {
-        width: 80%;
-
-        height: 900px;
+        width: 90%;
+        height: 800px;
 
         .todo-wrapper {
           height: 100%;
+
+          .todo-header {
+            &-avatar {
+              &-img {
+                width: 60px;
+
+                &:hover {
+                  width: 70px;
+                }
+              }
+            }
+          }
+
+          .todo-intro {
+            margin-top: 0rem;
+
+            &-title {
+              font-size: 170%;
+            }
+
+            &-text {
+              margin-top: 0.3rem;
+              font-size: 100%;
+              font-weight: 500;
+            }
+          }
+
+          .todo-body {
+            &-item {
+              margin-top: 0.5rem;
+              padding: 0.8rem;
+
+              &-options {
+                top: 5px;
+                right: 38px;
+                width: 100px;
+                height: 70px;
+                padding: 0.5rem;
+
+                &-edit,
+                &-delete {
+                  &-text {
+                    font-size: 90%;
+                    font-weight: 300;
+                  }
+                }
+
+                .arrow {
+                  position: absolute;
+                  width: 11px;
+                  height: 11px;
+                  top: 12px;
+                  right: -5px;
+                  background-color: $dark-blue;
+                  transform: rotate(45deg);
+                  z-index: 1;
+                }
+              }
+            }
+          }
+
+          .todo-add {
+            margin-top: 0.5rem;
+
+            .todo-add-btn {
+              width: 65px;
+              height: 65px;
+            }
+          }
         }
       }
     }
@@ -809,7 +904,7 @@ $light-blue: #8dc1dc;
       position: relative;
       bottom: -5px;
       width: 100%;
-      height: 30px;
+      height: 50px;
     }
   }
 }
@@ -818,12 +913,76 @@ $light-blue: #8dc1dc;
 @include tablet {
   .container {
     .wrapper {
-      .todo-container {
-        width: 90%;
-        height: 900px;
+      .calendar-container {
+        .calendar-body {
+          .react-calendar {
+            .react-calendar__navigation {
+              button {
+                font-size: 2rem;
+              }
+            }
+            .react-calendar__viewContainer {
+              .react-calendar__month-view {
+                div {
+                  .react-calendar__month-view__days {
+                    button {
+                      font-size: 1.1rem;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
 
+      .todo-container {
         .todo-wrapper {
-          height: 100%;
+          .todo-intro {
+            &-title {
+              font-size: 150%;
+            }
+            &-text {
+              margin-top: 0.2rem;
+            }
+          }
+
+          .todo-body {
+            &-item {
+              &-header {
+                &-main {
+                  &-form {
+                    margin-right: 1rem;
+
+                    &-label {
+                      .fa-check-square {
+                        font-size: 150%;
+                      }
+
+                      .fa-square {
+                        font-size: 150%;
+                      }
+                    }
+
+                    &-input {
+                      width: 20px;
+                      height: 20px;
+                    }
+                  }
+
+                  &-title {
+                    font-size: 110%;
+                  }
+                }
+
+                &-options {
+                  .fas {
+                    font-size: 100%;
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -836,7 +995,6 @@ $light-blue: #8dc1dc;
     .wrapper {
       .todo-container {
         width: 95%;
-        height: 900px;
       }
     }
   }
@@ -846,9 +1004,216 @@ $light-blue: #8dc1dc;
 @include small-phone {
   .container {
     .wrapper {
+      .calendar-container {
+        .calendar-body {
+          .react-calendar {
+            .react-calendar__navigation {
+              .react-calendar__navigation__label {
+                font-size: 1rem;
+                font-weight: 500;
+              }
+
+              button {
+                font-size: 2rem;
+              }
+            }
+            .react-calendar__viewContainer {
+              .react-calendar__month-view {
+                div {
+                  .react-calendar__month-view__weekdays {
+                    font-size: 1rem;
+                  }
+                  .react-calendar__month-view__days {
+                    height: 70vh;
+
+                    button {
+                      font-size: 1rem;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
       .todo-container {
         width: 100%;
-        height: 800px;
+        border: 8px solid rgba(0, 0, 0, 1);
+
+        .todo-wrapper {
+          padding: 1.5rem 0.5rem;
+
+          .todo-iphone-face {
+            width: 40%;
+            height: 30px;
+
+            &-line {
+              width: 40px;
+              height: 4px;
+            }
+
+            &-camera {
+              width: 10px;
+              height: 10px;
+            }
+          }
+
+          .todo-iphone-left {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+
+            &-text {
+              font-size: 90%;
+              font-weight: 500;
+            }
+          }
+
+          .todo-iphone-right {
+            right: 20px;
+
+            .fas {
+              font-size: 90%;
+            }
+
+            .fa-wifi {
+              margin-left: 0.3rem;
+            }
+
+            .fa-battery-half {
+              margin-left: 0.3rem;
+            }
+          }
+
+          .todo-header {
+            &-options {
+              &-cog {
+                &-img {
+                  width: 28px;
+                }
+              }
+
+              &-bell {
+                &-img {
+                  width: 30px;
+                }
+              }
+            }
+
+            &-avatar {
+              &-img {
+                width: 50px;
+
+                &:hover {
+                  width: 60px;
+                }
+              }
+            }
+          }
+
+          .todo-intro {
+            margin-top: 0.3rem;
+
+            &-title {
+              font-size: 130%;
+              font-weight: 500;
+            }
+
+            &-text {
+              margin-top: 0.3rem;
+              font-size: 100%;
+              font-weight: 400;
+            }
+          }
+
+          .todo-body {
+            &-item {
+              &-options {
+                width: 80px;
+                height: 60px;
+                padding: 0.4rem;
+
+                &-edit,
+                &-delete {
+                  &-text {
+                    font-size: 90%;
+                    font-weight: 300;
+                  }
+
+                  .far {
+                    font-size: 90%;
+                  }
+                }
+
+                .arrow {
+                  position: absolute;
+                  width: 10px;
+                  height: 10px;
+                  top: 12px;
+                  right: -5px;
+                  background-color: $dark-blue;
+                  transform: rotate(45deg);
+                  z-index: 1;
+                }
+              }
+
+              &-header {
+                &-main {
+                  &-form {
+                    margin-right: 0.5rem;
+
+                    &-label {
+                      .fa-check-square {
+                        font-size: 130%;
+                      }
+
+                      .fa-square {
+                        font-size: 130%;
+                      }
+                    }
+
+                    &-input {
+                      width: 15px;
+                      height: 15px;
+                    }
+                  }
+
+                  &-title {
+                    font-size: 100%;
+                    font-weight: 500;
+                  }
+                }
+
+                &-options {
+                  .fas {
+                    font-size: 100%;
+                  }
+                }
+              }
+
+              &-footer {
+                &-text {
+                  font-size: 90%;
+
+                  &-time {
+                    font-size: 90%;
+                    font-weight: 400;
+                  }
+                }
+              }
+            }
+          }
+
+          .todo-add {
+            margin-top: 1rem;
+
+            .todo-add-btn {
+              width: 50px;
+              height: 50px;
+            }
+          }
+        }
       }
     }
   }

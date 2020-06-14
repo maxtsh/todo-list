@@ -21,7 +21,7 @@ function LiveClock() {
     return () => clearInterval(timeInterval);
   }, []);
 
-  return <h4>{clock}</h4>;
+  return <h4 className="todo-iphone-left-text">{clock}</h4>;
 }
 
 export default React.memo(LiveClock);
