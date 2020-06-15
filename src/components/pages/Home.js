@@ -24,19 +24,20 @@ function Home() {
 
   function handleTileClass({ date, view }) {
     const activeDays = getTaskfulDays();
+    if (activeDays) {
+      return activeDays.map((eachDay) => {
+        const year = Number(eachDay.slice(0, 4));
+        const month = Number(eachDay.slice(5, 7));
+        const day = Number(eachDay.slice(8, 10));
 
-    return activeDays.map((eachDay) => {
-      const year = Number(eachDay.slice(0, 4));
-      const month = Number(eachDay.slice(5, 7));
-      const day = Number(eachDay.slice(8, 10));
-
-      return view === "month" &&
-        date.getFullYear() === year &&
-        date.getMonth() + 1 === month &&
-        date.getDate() === day
-        ? "circle"
-        : null;
-    });
+        return view === "month" &&
+          date.getFullYear() === year &&
+          date.getMonth() + 1 === month &&
+          date.getDate() === day
+          ? "circle"
+          : null;
+      });
+    }
   }
 
   // Looping through 50 snow drops

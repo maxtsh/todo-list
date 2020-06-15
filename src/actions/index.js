@@ -72,7 +72,10 @@ export function setDone(todoId) {
 // Geting the active days with at least one task in them
 export function getTaskfulDays() {
   const todos = JSON.parse(localStorage.getItem("todos"));
-  const activeDays = todos.map((todo) => todo.deadline);
+  let activeDays = [];
+  if (todos) {
+    activeDays = todos.map((todo) => todo.deadline);
+  }
 
   return activeDays;
 }
