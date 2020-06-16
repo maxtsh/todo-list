@@ -23,8 +23,6 @@ function Todo({ todo, reload, reloadValue }) {
   const [modal, setModal] = useState(false);
   const [optionModal, setOptionModal] = useState({ show: false, todoId: "" });
 
-  console.log("TODO RENDER");
-
   useEffect(() => {
     let popupTimeout;
     if (popup.show) {

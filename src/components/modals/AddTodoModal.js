@@ -24,8 +24,6 @@ function AddTodoModal({ close }) {
     return () => clearTimeout(popupTimeout);
   }, [popup]);
 
-  console.log("ADD MODAL RENDER");
-
   function handleCLose() {
     close(false);
   }

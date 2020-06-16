@@ -21,8 +21,6 @@ function Todos({ date }) {
   const [updateComponent, setUpdateComponent] = useState(false);
   const todos = getTodos(date);
 
-  console.log("TODOS RENDER");
-
   const fullDate = new Date(date);
 
   const year = fullDate.getFullYear();

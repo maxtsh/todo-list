@@ -46,7 +46,7 @@ function EditTodoModal({ reload, reloadValue, setModal, oldTodo }) {
   return (
     <>
       {popup.show ? <Popup message={popup.message} type={popup.type} /> : null}
-      <div className="overlay"></div>
+      {/* <div className="overlay"></div> */}
       <div className="modal-container">
         <div className="modal-wrapper">
           <div className="modal-header">
@@ -79,7 +79,6 @@ function EditTodoModal({ reload, reloadValue, setModal, oldTodo }) {
                 <label htmlFor="deadline">
                   <span className="content"></span>
                 </label>
-                {/* <i className="fas fa-history"></i> */}
               </div>
               <div className="login-footer">
                 <input type="submit" value="Edit" />
