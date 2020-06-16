@@ -1,6 +1,6 @@
 An elegant React.js Todo list app.
 
-![](src/cover.png)
+![](cover.png)
 
 ## Available Scripts
 
