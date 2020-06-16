@@ -101,13 +101,13 @@ function Home() {
                 <div className="todo-header-avatar">
                   <img
                     className="todo-header-avatar-img"
-                    src={require("../../assets/images/avatar.jpg")}
+                    src={require("../../assets/images/avatar-placeholder.gif")}
                     alt=""
                   />
                 </div>
               </div>
               <div className="todo-intro">
-                <h2 className="todo-intro-title">Hello, Max</h2>
+                <h2 className="todo-intro-title">Hello, Visitor</h2>
                 <p className="todo-intro-text">These are your active tasks.</p>
               </div>
               <Todos date={selectedDate} />
